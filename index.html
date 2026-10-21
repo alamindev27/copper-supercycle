@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Copper LEAPS System — +31.3% on Real Capital</title>
+<meta name="description" content="An AI-driven, signal-based system for trading long-dated copper options. Real trades. Real results.">
+<meta name="theme-color" content="#070b11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{bg:'#070b11',card:'#0e141d',line:'#1b2431',cu:'#f08a3c',cu2:'#ffc58a',pat:'#2dd4a7',red:'#fb7185',mute:'#8794a6'},fontFamily:{d:['Sora','sans-serif'],b:['Manrope','sans-serif'],m:['JetBrains Mono','monospace']}}}}
+</script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:#070b11;color:#dde5f0;padding-bottom:76px}
+@media(min-width:768px){body{padding-bottom:0}}
+/* Animated copper/patina mesh behind hero and CTA */
+.mesh{background:radial-gradient(45% 55% at 15% 10%,rgba(240,138,60,.28),transparent 70%),radial-gradient(40% 45% at 85% 20%,rgba(45,212,167,.16),transparent 70%),radial-gradient(50% 50% at 50% 100%,rgba(240,138,60,.10),transparent 70%);animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(-3%,3%,0) scale(1.1)}}
+.grid-bg{background-image:linear-gradient(#1b243166 1px,transparent 1px),linear-gradient(90deg,#1b243166 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(70% 70% at 50% 30%,#000,transparent)}
+.cu-text{background:linear-gradient(90deg,#ffc58a,#f08a3c,#2dd4a7,#f08a3c,#ffc58a);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s linear infinite}
+@keyframes sheen{to{background-position:250% center}}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(14px)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1) .2s}
+.in .draw,.draw.in{stroke-dashoffset:0}
+.fade{opacity:0;transition:opacity 1s ease 1.8s}.in .fade{opacity:1}
+.bar{width:0;transition:width 1.6s cubic-bezier(.2,.7,.2,1) .3s}
+.btn{background:linear-gradient(90deg,#f08a3c,#ffb15c,#f08a3c);background-size:220% auto;color:#1a0f05;transition:background-position .5s,transform .2s,box-shadow .3s}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(240,138,60,.7)}
+.pulse{animation:pulse 2s infinite}@keyframes pulse{to{box-shadow:0 0 0 10px rgba(45,212,167,0)}}
+.pulse{box-shadow:0 0 0 0 rgba(45,212,167,.6)}
+.marq{display:flex;gap:3rem;width:max-content;animation:marq 32s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.spy.on{color:#fff;background:rgba(240,138,60,.12);border-color:#f08a3c}
+nav a.on{color:#fff}
+details summary{list-style:none;cursor:pointer}details summary::-webkit-details-marker{display:none}
+details[open] .chev{transform:rotate(180deg)}.chev{transition:transform .3s}
+.card{background:#0e141d;border:1px solid #1b2431;border-radius:1.25rem;transition:border-color .3s,transform .3s}
+.card:hover{border-color:#f08a3c55}
+:focus-visible{outline:2px solid #f08a3c;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}.fade{opacity:1}}
+</style>
+</head>
+<body class="font-b antialiased overflow-x-hidden">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-40 border-b border-white/5 bg-bg/70 backdrop-blur-xl">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-d font-bold flex items-center gap-2"><span class="w-7 h-7 rounded-lg bg-gradient-to-br from-cu to-pat grid place-items-center text-bg text-xs"><i class="fa-solid fa-bolt"></i></span>Copper LEAPS</a>
+    <div class="hidden md:flex gap-7 text-sm text-mute">
+      <a class="hover:text-white" href="#thesis">Thesis</a><a class="hover:text-white" href="#why">Why options</a><a class="hover:text-white" href="#story">Story</a><a class="hover:text-white" href="#results">Results</a><a class="hover:text-white" href="#report">Daily report</a>
+    </div>
+    <a href="#buy" class="btn hidden md:inline-block rounded-lg px-4 py-2 text-sm font-semibold">Get the system · $25</a>
+    <button id="menuBtn" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" class="md:hidden w-10 h-10 rounded-lg border border-white/10 bg-white/5 grid place-items-center text-lg hover:border-cu hover:text-cu transition"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="relative overflow-hidden">
+  <div class="mesh absolute inset-0 pointer-events-none"></div><div class="grid-bg absolute inset-0 pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto px-5 pt-14 pb-16 md:pt-24 md:pb-24 grid lg:grid-cols-[1.15fr_.85fr] gap-12 items-center">
+    <div>
+      <span class="inline-flex items-center gap-2 rounded-full border border-pat/30 bg-pat/10 px-3 py-1 text-xs text-pat"><span class="pulse w-2 h-2 rounded-full bg-pat"></span>Live system · updated automatically · May 2026</span>
+      <h1 class="font-d font-extrabold text-[2rem] leading-[1.1] sm:text-5xl lg:text-[3.4rem] mt-5 tracking-tight">I participate in copper's long-term growth using a technique <span class="cu-text">typically reserved for Wall Street</span></h1>
+      <p class="mt-5 text-mute text-base sm:text-lg max-w-xl">I do it with AI and a daily email. The system is up <b class="text-pat">+31.3%</b> on real capital. My first trade returned <b class="text-pat">+48.7%</b> in 13 days. Everything I use is packaged for your computer — $25.</p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href="#buy" class="btn rounded-xl px-7 py-3.5 font-semibold text-center">Get the playbook + code — $25</a>
+        <a href="#results" class="rounded-xl px-7 py-3.5 font-semibold text-center border border-white/15 hover:border-cu hover:text-cu transition">See the real results</a>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-mute"><span><i class="fa-solid fa-shield-halved text-cu mr-1.5"></i>No margin. Max loss = premium</span><span><i class="fa-solid fa-user-tie text-cu mr-1.5"></i>Validated by a 30-year CBOE market maker</span></div>
+    </div>
+    <!-- live card -->
+    <div class="glass rounded-3xl p-6 relative">
+      <div class="flex justify-between text-xs text-mute"><span>Net ROI on deployed capital</span><span class="font-m">CPER · LEAPS</span></div>
+      <div class="font-d font-extrabold text-6xl sm:text-7xl text-pat mt-2" data-count="31.3" data-pre="+" data-suf="%" data-dec="1">+31.3%</div>
+      <svg viewBox="0 0 300 70" class="w-full mt-3"><path class="draw in" d="M0,60 C30,58 45,50 70,48 S110,52 135,38 S185,40 210,26 S265,22 300,6" fill="none" stroke="#2dd4a7" stroke-width="3" stroke-linecap="round" style="stroke-dashoffset:0;animation:hd 2.4s ease both"/></svg>
+      <style>@keyframes hd{from{stroke-dashoffset:1400}}</style>
+      <div class="grid grid-cols-3 gap-3 mt-5 text-center">
+        <div class="rounded-xl bg-white/5 p-3"><div class="font-d font-bold text-lg text-pat" data-count="1042" data-pre="+$" data-comma="1">+$1,042</div><div class="text-[10px] text-mute mt-0.5">Profit to date</div></div>
+        <div class="rounded-xl bg-white/5 p-3"><div class="font-d font-bold text-lg text-pat" data-count="48.7" data-pre="+" data-suf="%" data-dec="1">+48.7%</div><div class="text-[10px] text-mute mt-0.5">First trade · 13d</div></div>
+        <div class="rounded-xl bg-white/5 p-3"><div class="font-d font-bold text-lg" data-count="4">4</div><div class="text-[10px] text-mute mt-0.5">Open positions</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="border-y border-white/5 bg-card/60 overflow-hidden py-3"><div class="marq font-m text-xs text-mute" id="ticker"></div></div>
+
+<main>
+<!-- THESIS -->
+<section id="thesis" class="max-w-6xl mx-auto px-5 py-20 sm:py-28 grid lg:grid-cols-2 gap-12 items-center">
+  <div class="rv">
+    <p class="text-cu text-sm font-semibold">It started with a hunch</p>
+    <h2 class="font-d font-bold text-3xl sm:text-4xl mt-2 leading-tight">Copper can't keep up with demand. I wanted leverage on that.</h2>
+    <p class="mt-5 text-mute leading-relaxed">I kept reading about copper — energy transition, AI data centers, EV buildouts, defense — and a supply side that just can't keep up. I didn't want a copper ETF or mining stocks. I wanted leverage on a long-term thesis. That meant buying long-dated call options on <b class="text-white">CPER</b> (the U.S. Copper ETF).</p>
+    <p class="mt-4 text-mute leading-relaxed">Today, four months in, the system is up <b class="text-pat">+31.3%</b> on real capital.</p>
+  </div>
+  <figure class="rv card p-5 sm:p-6">
+    <div class="flex justify-between items-start gap-3">
+      <figcaption><div class="text-sm font-semibold">Copper spot price (HG) · 2020–2026</div><div class="text-xs text-mute mt-0.5">Data: Yahoo Finance · refreshed every Monday</div></figcaption>
+      <div class="text-right"><div class="font-m text-2xl text-cu" data-count="6.55" data-pre="$" data-suf="/lb" data-dec="2">$6.55/lb</div><div class="text-xs text-pat">+<span data-count="180" data-suf="%">180%</span> from 2020 lows</div></div>
+    </div>
+    <svg viewBox="0 0 600 240" class="w-full mt-4" role="img" aria-label="Copper price rising 2020 to 2026">
+      <defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f08a3c" stop-opacity=".4"/><stop offset="1" stop-color="#f08a3c" stop-opacity="0"/></linearGradient></defs>
+      <g stroke="#1b2431"><line x1="0" y1="30" x2="600" y2="30"/><line x1="0" y1="105" x2="600" y2="105"/><line x1="0" y1="180" x2="600" y2="180"/></g>
+      <g fill="#8794a6" font-size="10" font-family="JetBrains Mono"><text x="2" y="24">$7</text><text x="2" y="99">$4</text><text x="2" y="174">$1</text><text x="0" y="234">2020</text><text x="190" y="234">2022</text><text x="380" y="234">2024</text><text x="562" y="234">2026</text></g>
+      <path class="fade" d="M0,187 C60,170 90,100 140,96 S200,120 240,134 S320,118 360,123 S430,105 470,108 S540,70 570,60 S590,34 600,20 L600,215 L0,215Z" fill="url(#a)"/>
+      <path class="draw" d="M0,187 C60,170 90,100 140,96 S200,120 240,134 S320,118 360,123 S430,105 470,108 S540,70 570,60 S590,34 600,20" fill="none" stroke="#f08a3c" stroke-width="3.5" stroke-linecap="round"/>
+      <circle class="fade" cx="598" cy="20" r="6" fill="#ffc58a"><animate attributeName="r" values="5;9;5" dur="2s" repeatCount="indefinite"/></circle>
+    </svg>
+  </figure>
+</section>
+
+<!-- QUOTE -->
+<section class="bg-gradient-to-b from-card/0 via-card to-card/0 py-16"><div class="max-w-3xl mx-auto px-5 text-center rv">
+  <i class="fa-solid fa-quote-left text-cu text-2xl"></i>
+  <p class="font-d font-bold text-2xl sm:text-3xl mt-4 leading-snug">We need to mine more copper in the next 18 years than in the last 10,000 combined.</p>
+  <p class="text-sm text-mute mt-4">Robert Friedland, Ivanhoe Mines · at the White House, 2025</p>
+</div></section>
+
+<!-- WHY OPTIONS -->
+<section id="why" class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+  <div class="max-w-2xl rv"><p class="text-cu text-sm font-semibold">Why options — and why not on margin</p>
+  <h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">"Wait, isn't options trading risky?"</h2>
+  <p class="mt-4 text-mute">It can be. So can crossing the street. The risk depends entirely on what you do. Here is what I'm doing — and what I'm NOT doing.</p></div>
+  <div class="grid md:grid-cols-2 gap-5 mt-10">
+    <div class="rv card p-6 border-red/25"><h3 class="font-d font-bold text-red flex items-center gap-2"><i class="fa-solid fa-ban"></i>What I'm not doing</h3><ul id="no" class="mt-4 space-y-3 text-sm text-mute"></ul></div>
+    <div class="rv card p-6 border-pat/25"><h3 class="font-d font-bold text-pat flex items-center gap-2"><i class="fa-solid fa-circle-check"></i>What I am doing</h3><ul id="yes" class="mt-4 space-y-3 text-sm text-mute"></ul></div>
+  </div>
+  <div id="faq" class="rv mt-8 space-y-3"></div>
+  <div class="rv mt-8 grid sm:grid-cols-[1fr_auto] gap-5 items-center rounded-2xl border border-cu/30 bg-cu/10 p-6">
+    <p class="font-d font-bold text-lg sm:text-xl">"The most I can lose on any trade is what I paid for the option. That's it. No margin call. No surprise. No phone call from Robinhood."<span class="block text-xs font-normal text-mute mt-2">— Me, after my first trade</span></p>
+    <p class="text-sm text-mute sm:max-w-[16rem]"><b class="text-cu">Bottom line:</b> If you've never traded options, this is the safer way to start. Long time horizon. Small position sizes. Defined maximum loss.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="bg-card/50 border-y border-white/5 py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5">
+  <div class="max-w-2xl rv"><p class="text-cu text-sm font-semibold">How it happened</p><h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">From a hunch to a system that runs itself</h2></div>
+  <ol id="steps" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></ol>
+</div></section>
+
+<!-- EXPERT -->
+<section class="max-w-6xl mx-auto px-5 py-20 sm:py-28 grid lg:grid-cols-[.9fr_1.1fr] gap-10">
+  <div class="rv">
+    <p class="text-cu text-sm font-semibold">Instead of free advice, I paid for it</p>
+    <h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">Is my system real, or garbage?</h2>
+    <p class="mt-4 text-mute text-sm">Before scaling up, I booked a consultation with a veteran CBOE market maker to find out.</p>
+    <div class="card p-5 mt-6"><div class="flex gap-4 items-center">
+      <img src="https://ui-avatars.com/api/?name=Kevin+L&background=1b2431&color=ffc58a&size=120&bold=true" alt="Kevin Lex Luthringshausen" width="64" height="64" class="rounded-full ring-2 ring-cu/50">
+      <div><h3 class="font-d font-bold">Kevin "Lex" Luthringshausen</h3><p class="text-xs text-mute mt-1">Strategic Partnerships, Trader Inc.<br>30+ years on the CBOE · original floor market maker · University of Notre Dame</p></div></div>
+      <p class="mt-4 text-sm italic text-mute border-t border-line pt-4">"I was one of the original guys down on the CBOE way back when…"</p>
+      <a href="#" class="inline-block mt-3 text-sm text-cu"><i class="fa-brands fa-youtube mr-1.5"></i>Trader Hub on YouTube</a></div>
+  </div>
+  <div id="lex" class="space-y-4 self-center"></div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="relative bg-card/50 border-y border-white/5 py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5">
+  <div class="max-w-2xl rv"><p class="text-cu text-sm font-semibold">Real results</p><h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">My first trade, then the whole book</h2></div>
+  <div class="grid lg:grid-cols-2 gap-5 mt-10">
+    <div class="rv card p-6">
+      <div class="flex justify-between gap-3 flex-wrap"><div><div class="text-xs text-mute">First trade · 13 days</div><h3 class="font-d font-bold text-xl">CPER Jan 2026 $40 Call</h3></div><div class="text-right text-xs text-mute font-m">Jan 16 → Jan 29, 2026</div></div>
+      <div class="mt-8 grid grid-cols-3 text-center gap-2">
+        <div><div class="font-m text-lg sm:text-2xl" data-count="679.04" data-pre="$" data-dec="2" data-comma="1">$679.04</div><div class="text-xs text-mute">Bought at</div></div>
+        <div class="grid place-items-center text-cu"><i class="fa-solid fa-arrow-right-long text-2xl"></i></div>
+        <div><div class="font-m text-lg sm:text-2xl" data-count="1009.95" data-pre="$" data-dec="2" data-comma="1">$1,009.95</div><div class="text-xs text-mute">Sold at</div></div>
+      </div>
+      <div class="mt-8 rounded-xl bg-pat/10 border border-pat/25 p-5 text-center"><div class="font-d font-extrabold text-4xl text-pat" data-count="330.91" data-pre="+$" data-dec="2">+$330.91</div><div class="text-sm text-pat mt-1">+48.7% return</div></div>
+      <p class="text-[11px] text-mute mt-4">Source: Robinhood transaction history · CPER (United States Copper Index Fund)</p>
+    </div>
+    <div class="rv card p-6"><h3 class="font-d font-bold">Realized + unrealized to date</h3><dl id="pl" class="mt-4 divide-y divide-line text-sm"></dl><p class="text-[11px] text-mute mt-4">As of May 13, 2026 · an active system, not a one-time win.</p></div>
+  </div>
+</div></section>
+
+<!-- DAILY REPORT -->
+<section id="report" class="max-w-6xl mx-auto px-5 py-20 sm:py-28 grid lg:grid-cols-[.8fr_1.2fr] gap-10 items-start">
+  <div class="rv lg:sticky lg:top-24">
+    <p class="text-cu text-sm font-semibold">The email I get every morning</p>
+    <h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">No dashboards. No charts to read. Just a clear answer.</h2>
+    <p class="mt-4 text-mute text-sm">This is the actual automated report my system sends at 11:00 AM ET, every trading day — in plain English, with color-coded status and differentiated MAJOR alerts.</p>
+    <ul class="mt-6 space-y-3 text-sm text-mute"><li><i class="fa-solid fa-clock text-cu mr-2"></i>Monitors CPER every 30 minutes</li><li><i class="fa-solid fa-hourglass-half text-cu mr-2"></i>5-day cooldown, 3 signal types</li><li><i class="fa-solid fa-bell text-cu mr-2"></i>🔥 Deep discount · 📉 Pullback · ⚠️ Trend break</li></ul>
+  </div>
+  <div class="rv rounded-2xl border border-line bg-[#0b1018] overflow-hidden shadow-2xl shadow-black/50">
+    <div class="flex items-center gap-2 px-4 py-3 bg-card border-b border-line"><i class="w-2.5 h-2.5 rounded-full bg-red"></i><i class="w-2.5 h-2.5 rounded-full bg-cu"></i><i class="w-2.5 h-2.5 rounded-full bg-pat"></i><span class="ml-2 text-xs text-mute truncate">Example report — May 13, 2026 · 11:00 AM ET</span></div>
+    <div class="p-4 sm:p-5 font-m text-[11px] sm:text-xs space-y-5" id="mail"></div>
+  </div>
+</section>
+
+<!-- POSITIONS -->
+<section class="bg-card/50 border-y border-white/5 py-20 sm:py-28"><div class="max-w-6xl mx-auto px-5">
+  <div class="max-w-2xl rv"><p class="text-cu text-sm font-semibold">Open positions — unrealized</p><h2 class="font-d font-bold text-3xl sm:text-4xl mt-2">What the system is holding today</h2><p class="text-mute text-sm mt-3">Real long-dated call contracts. Updated each trading day.</p></div>
+  <div class="rv grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10 text-center">
+    <div class="card p-5"><div class="font-d font-extrabold text-3xl" data-count="4">4</div><div class="text-xs text-mute mt-1">Open</div></div>
+    <div class="card p-5"><div class="font-d font-extrabold text-3xl" data-count="2654" data-pre="$" data-comma="1">$2,654</div><div class="text-xs text-mute mt-1">Cost basis</div></div>
+    <div class="card p-5"><div class="font-d font-extrabold text-3xl" data-count="3365" data-pre="$" data-comma="1">$3,365</div><div class="text-xs text-mute mt-1">Market value</div></div>
+    <div class="card p-5 border-pat/30"><div class="font-d font-extrabold text-3xl text-pat" data-count="711" data-pre="+$" data-comma="1">+$711</div><div class="text-xs text-pat mt-1">+26.8% unrealized</div></div>
+  </div>
+  <div id="pos" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5"></div>
+  <p class="text-[11px] text-mute mt-4">As of May 13, 2026. Position #1 is slightly underwater, but the system waits — that's the discipline at work.</p>
+</div></section>
+
+<!-- CTA -->
+<section id="buy" class="relative overflow-hidden"><div class="mesh absolute inset-0 pointer-events-none"></div>
+  <div class="relative max-w-5xl mx-auto px-5 py-20 sm:py-28">
+    <div class="text-center max-w-2xl mx-auto rv"><h2 class="font-d font-extrabold text-3xl sm:text-5xl leading-tight">Get my exact CPER playbook + the <span class="cu-text">Python that runs it</span></h2>
+    <p class="mt-4 text-mute">Everything I use to trade copper long-dated options, packaged for your computer. Drop it into Claude Code or your terminal and run it the same day.</p></div>
+    <div class="rv glass rounded-3xl p-6 sm:p-10 mt-10 grid md:grid-cols-2 gap-8">
+      <div><h3 class="font-d font-bold text-cu">What's included</h3><ul id="inc" class="mt-4 space-y-3 text-sm text-mute"></ul></div>
+      <div><h3 class="font-d font-bold text-cu">What you need</h3><ul id="need" class="mt-4 space-y-3 text-sm text-mute"></ul>
+        <div class="mt-8 rounded-2xl bg-bg/60 border border-line p-5 text-center"><div class="font-d font-extrabold text-5xl">$25</div><div class="text-xs text-mute">one-time · instant access</div>
+        <a href="#" class="btn block mt-4 rounded-xl py-3.5 font-semibold">Get the playbook + code</a><p class="text-xs text-mute mt-3"><i class="fa-solid fa-lock mr-1"></i>Secure payment via Stripe</p></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="border-t border-white/5"><div class="max-w-6xl mx-auto px-5 py-10 text-xs text-mute space-y-4">
+  <div class="flex flex-wrap items-center gap-3">Share:
+    <button id="copy" class="rounded-lg border border-line px-3 py-1.5 hover:border-cu hover:text-cu transition"><i class="fa-regular fa-copy mr-1"></i>Copy link</button>
+    <a id="tw" href="#" class="rounded-lg border border-line px-3 py-1.5 hover:border-cu hover:text-cu transition"><i class="fa-brands fa-x-twitter mr-1"></i>Tweet</a>
+    <a id="li" href="#" class="rounded-lg border border-line px-3 py-1.5 hover:border-cu hover:text-cu transition"><i class="fa-brands fa-linkedin mr-1"></i>LinkedIn</a></div>
+  <p>Questions? <a href="mailto:you@example.com" class="text-cu">you@example.com</a></p>
+  <p>Personal case study, not financial advice. Options involve risk and are not suitable for every investor. Past performance does not guarantee future results. Only trade with money you can afford to lose.</p>
+</div></footer>
+
+<!-- Mobile sidebar navigation -->
+<div id="overlay" class="md:hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<aside id="drawer" role="dialog" aria-modal="true" aria-label="Site menu" class="md:hidden fixed top-0 right-0 bottom-0 z-[70] w-72 max-w-[85vw] bg-card border-l border-line translate-x-full transition-transform duration-300 flex flex-col">
+  <div class="h-16 px-5 flex items-center justify-between border-b border-line">
+    <span class="font-d font-bold flex items-center gap-2"><span class="w-7 h-7 rounded-lg bg-gradient-to-br from-cu to-pat grid place-items-center text-bg text-xs"><i class="fa-solid fa-bolt"></i></span>Menu</span>
+    <button id="menuClose" type="button" aria-label="Close menu" class="w-9 h-9 rounded-lg border border-white/10 grid place-items-center hover:border-cu hover:text-cu transition"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="flex-1 overflow-y-auto p-3 space-y-1 text-[15px]">
+    <a href="#thesis" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-bullseye w-5 text-cu"></i>Thesis</a>
+    <a href="#why" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-circle-question w-5 text-cu"></i>Why options</a>
+    <a href="#story" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-route w-5 text-cu"></i>Story</a>
+    <a href="#results" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-chart-line w-5 text-cu"></i>Results</a>
+    <a href="#report" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-envelope-open-text w-5 text-cu"></i>Daily report</a>
+    <a href="#buy" class="spy flex items-center gap-3 rounded-xl px-4 py-3 text-mute border-l-2 border-transparent"><i class="fa-solid fa-cart-shopping w-5 text-cu"></i>Get the system</a>
+  </nav>
+  <div class="p-4 border-t border-line text-xs text-mute">Not financial advice. Options involve risk.</div>
+</aside>
+
+<!-- Sticky mobile CTA -->
+<div id="mcta" class="md:hidden fixed bottom-0 inset-x-0 z-50 p-3 bg-bg/90 backdrop-blur-xl border-t border-white/10 translate-y-full transition-transform duration-300">
+  <a href="#buy" class="btn block text-center rounded-xl py-3 font-semibold">Get the playbook + code — $25</a></div>
+
+<script>
+const $=s=>document.querySelector(s), li=(i,c,t)=>`<li class="flex gap-3"><i class="fa-solid ${i} ${c} mt-1"></i><span>${t}</span></li>`;
+const fill=(id,arr,fn)=>$(id).innerHTML=arr.map(fn).join('');
+
+// Ticker (duplicated for seamless loop)
+const tk=['CPER $41.24 ▲ above 50-day avg','Copper HG $6.55/lb','Net ROI +31.3%','Profit +$1,042','First trade +48.7% in 13 days','4 open LEAPS','Daily report 11:00 AM ET','Max loss = premium paid'];
+$('#ticker').innerHTML=[...tk,...tk].map(t=>`<span class="whitespace-nowrap"><span class="text-cu">●</span> ${t}</span>`).join('');
+
+fill('#no',['Trading on margin (borrowing money to amplify bets)','Selling options (where losses can be unlimited)','Day trading short-dated options (the Reddit horror stories)','Putting more than I can afford to lose into one trade'],t=>li('fa-xmark','text-red',t));
+fill('#yes',['Buying long-dated call options (1–2 years out) — called LEAPS','Paying cash up front — my max loss is the premium paid','Keeping each position small and defined','A long-term thesis with a hard cap on risk over years'],t=>li('fa-check','text-pat',t));
+
+// FAQ accordions
+const faq=[
+ ['How options actually work, in 30 seconds',"When you buy a call option, you're paying for the right to benefit from a move in a stock or ETF going up — without buying it. You pay a “premium” up front. That's the maximum you can ever lose. If the price doesn't move, the option expires and you lose the premium. If it moves up significantly, the option gains value much faster than the stock itself. That's leverage — and the trade-off is that the move has to happen before expiration.",1],
+ ['Why long-dated options specifically?',"Long-dated calls expire 1–2 years out. My current positions expire in January 2027 and January 2028 — years for the copper thesis to play out, not days or weeks. These contracts are formally called LEAPS (Long-term Equity AnticiPation Securities).",0],
+ ['Why not just buy CPER stock or a copper miner?','<div class="grid sm:grid-cols-3 gap-3 mt-1"><div class="rounded-xl bg-white/5 p-4"><b class="text-white">Capital efficiency</b><br>One CPER call contract gives exposure to 100 shares — for a fraction of the cost.</div><div class="rounded-xl bg-white/5 p-4"><b class="text-white">Defined risk</b><br>With stock you can keep losing as price drops. With a long-dated option, downside is capped at what I paid.</div><div class="rounded-xl bg-white/5 p-4"><b class="text-white">Miners ≠ copper</b><br>Mining stocks add management, geographic, currency and labor risk. I wanted copper itself.</div></div>',0],
+ ['How much do I have to put at risk?',"You decide. My first trade was $679. You could start with a single $300 contract. You set the position size, strike and expiration. The system tells you when conditions favor entry — you decide how much you're willing to lose.",0]];
+fill('#faq',faq,([q,a,o])=>`<details class="card p-5" ${o?'open':''}><summary class="flex justify-between items-center gap-4 font-d font-bold">${q}<i class="fa-solid fa-chevron-down chev text-cu text-sm"></i></summary><div class="mt-3 text-sm text-mute leading-relaxed">${a}</div></details>`);
+
+// Story steps
+const st=[['Locked in the thesis','Copper has a structural deficit driven by EVs, AI data centers and grid investment. Long-dated calls on CPER are the cleanest leveraged way to play it.','fa-bullseye'],
+['Made the first trade','$679 into a single CPER Jan 2026 $40 call. Out 13 days later at $1,010. +48.7% return. The thesis works.','fa-rocket'],
+['Built a real system around it','A signal-driven monitor that watches CPER every 30 minutes: 5-day cooldown, three signal types, per-expiration buy logic and full-stack guardrails.','fa-gears'],
+['Validated by a CBOE market maker','Kevin "Lex" Luthringshausen validated the spread rules, the 50% profit-take and the discipline framework. Tiered exit logic is his.','fa-user-check'],
+['System runs 24/7','30-min monitoring in market hours. Daily report at 11 AM ET. MAJOR alerts for deep discounts, pullbacks and trend breaks. In-cooldown override for unusual conditions.','fa-satellite-dish'],
+['I just trade what it tells me','Four positions open, +$711 unrealized. No FOMO, no emotion. The system tells me when to buy and when to sell.','fa-hand-holding-dollar']];
+fill('#steps',st,([t,d,i],n)=>`<li class="rv card p-6 hover:-translate-y-1"><div class="flex items-center justify-between"><span class="w-11 h-11 rounded-xl bg-gradient-to-br from-cu/25 to-pat/15 text-cu grid place-items-center"><i class="fa-solid ${i}"></i></span><span class="font-m text-xs text-mute">Step ${n+1}</span></div><h3 class="font-d font-bold mt-5">${t}</h3><p class="text-sm text-mute mt-2 leading-relaxed">${d}</p></li>`);
+
+// Lex quotes
+fill('#lex',[['CPER spreads pass the 10% rule','"Less than 10%… that\'s too bad. My rule of thumb, no matter the option is… 10% or less."'],['Take profits at 50%','"Rinse and repeat. Go find something else."'],['Discipline is everything','"You cannot waver from your discipline. Tailor it to your sanity."']],([t,q])=>`<div class="rv card p-5 flex gap-4"><i class="fa-solid fa-circle-check text-pat text-xl mt-0.5"></i><div><h3 class="font-d font-bold">${t}</h3><p class="text-sm italic text-mute mt-1">${q}</p></div></div>`);
+
+// P&L rows
+fill('#pl',[['Open positions','4',''],['Cost basis (open)','$2,654.00',''],['Current market value','$3,365.00',''],['Unrealized P&L','+$711.00 (+26.8%)','text-pat'],['Realized P&L (closed)','+$330.91','text-pat'],['Total deployed','$3,333.00',''],['Net P&L','+$1,041.91','text-pat font-bold text-lg'],['Net ROI on deployed','+31.3%','text-pat font-bold text-lg']],([a,b,c])=>`<div class="flex justify-between py-2.5"><dt class="text-mute">${a}</dt><dd class="font-m ${c}">${b}</dd></div>`);
+
+// Email mock
+const mail=[
+ `<div class="rounded-lg border border-cu/40 bg-cu/10 p-3"><div class="text-cu">Today's action</div><div class="font-semibold mt-1 text-sm">🟠 WAIT — IN COOLDOWN (2 trading days remaining)</div><div class="text-mute mt-1">Signal fired but is blocked until 2026-05-14</div></div>`,
+ `<div><div class="text-cu mb-2">Market</div><div class="flex justify-between"><span>CPER (Copper ETF)</span><span>$41.24 <span class="text-pat">above 50-day avg</span></span></div><div class="flex justify-between mt-1"><span class="text-mute">Copper Spot (HG)</span><span>$6.55/lb</span></div></div>`,
+ `<div><div class="text-cu mb-2">Greeks — position health · Jan 2028 $40C (810 DTE)</div><div class="space-y-1.5"><div class="flex justify-between gap-3"><span class="text-mute">Δ 0.58 — if CPER gains $1, contract gains ~$58</span><span class="text-pat shrink-0">🟢 STRONG</span></div><div class="flex justify-between gap-3"><span class="text-mute">Θ −0.05 — about $5/day decay per contract</span><span class="text-pat shrink-0">🟢 LOW</span></div><div class="flex justify-between gap-3"><span class="text-mute">Vega 0.35 · IV 34.2% — 1% IV = ±$35</span><span class="text-cu shrink-0">🟠 ELEVATED</span></div></div></div>`,
+ `<div><div class="text-cu mb-2">Spreads &amp; buy signals</div><div class="flex justify-between"><span>Cooldown</span><span class="text-cu">Active through 2026-05-15</span></div><div class="flex justify-between mt-1"><span>50-Day Trend</span><span class="text-pat">BULLISH (3/3 conditions)</span></div><div class="mt-2 text-mute">Jan 2027 $40C · bid $5.75 vs avg entry $5.84 (−1.3%)</div><div class="text-pat">🟢 BUY ZONE (blocked by cooldown)</div><div class="mt-2 text-mute">Jan 2028 $40C · bid $9.30 vs avg entry $6.90 (+34.8%)</div><div class="text-mute">⚪ NO BUY — above avg entry</div></div>`,
+ `<div><div class="text-cu mb-2">Open position · Jan 2026 $40 Call</div><div class="text-mute">Entry $6.78 → Mark $9.30 · <span class="text-pat">+38.8%</span> · target +50%</div><div class="h-2 rounded-full bg-white/10 mt-2 overflow-hidden"><div class="bar h-full rounded-full bg-gradient-to-r from-cu to-pat" data-w="78%"></div></div></div>`,
+ `<div class="flex justify-between border-t border-line pt-3 text-sm"><span>Net P&amp;L</span><span class="text-pat">+$1,041.91 <span class="text-mute text-xs">(+31.3%)</span></span></div>`];
+$('#mail').innerHTML=mail.join('');
+
+// Positions with animated progress to the +50% target
+const ps=[[1,'Jan 2027 $40 Call',247,5.84,5.75,'-$9',-1.3],[2,'Jan 2028 $40 Call',618,6.70,9.30,'+$260',38.8],[3,'Jan 2028 $40 Call',618,6.80,9.30,'+$250',36.8],[4,'Jan 2028 $40 Call',618,7.28,9.30,'+$202',27.7]];
+fill('#pos',ps,([n,c,d,e,m,pl,p])=>{const u=p>=0,k=u?'pat':'red';return `<article class="rv card p-5"><div class="flex justify-between text-xs text-mute"><span>Position #${n}</span><span class="text-${k} font-semibold">${u?'+':''}${p}%</span></div><h3 class="font-d font-bold mt-2">CPER ${c}</h3><p class="text-xs text-mute">Expires in ${d} days</p><div class="h-1.5 rounded-full bg-white/10 mt-4 overflow-hidden"><div class="bar h-full rounded-full bg-${k}" data-w="${Math.max(4,Math.min(100,p*2))}%"></div></div><div class="mt-4 grid grid-cols-3 font-m text-xs"><div><div class="text-mute text-[10px]">Entry</div>$${e.toFixed(2)}</div><div><div class="text-mute text-[10px]">Now</div>$${m.toFixed(2)}</div><div><div class="text-mute text-[10px]">P&amp;L</div><span class="text-${k}">${pl}</span></div></div></article>`});
+
+fill('#inc',['Complete Python monitoring system (signal logic, cooldown rules, spread filters, risk tools)','Daily report email template — the exact format shown above','Per-expiration buy signals + differentiated MAJOR alerts','Greeks-based position health monitoring','Tiered exit rules (50% profit take, trend break)','Configuration walkthrough — set your strikes, expirations, risk tolerance','My CLAUDE.md file — drop it into Claude Code and be in business the same day'],t=>li('fa-check','text-pat',t));
+fill('#need',[['fa-laptop','A Mac or Linux machine (Windows works with WSL)'],['fa-building-columns','A brokerage account that supports options (I use Robinhood)'],['fa-brands fa-python','Python on your computer — setup is a few commands, instructions included'],['fa-terminal','Claude Code or any terminal (optional, recommended for modifications)']],([i,t])=>li(i,'text-cu',t));
+
+// Reveal (also triggers counters, bars, chart)
+const run=el=>{
+  el.querySelectorAll?.('[data-count]').forEach(count); el.querySelectorAll?.('[data-w]').forEach(b=>b.style.width=b.dataset.w);
+  if(el.dataset?.count)count(el);
+};
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function count(el){
+  if(el.dataset.done)return;el.dataset.done=1;if(rm)return;
+  const end=+el.dataset.count,dec=+(el.dataset.dec||0),t0=performance.now();
+  (function f(t){const k=Math.min((t-t0)/1800,1),v=end*(1-Math.pow(1-k,3));
+    el.textContent=(el.dataset.pre||'')+(el.dataset.comma?v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}):v.toFixed(dec))+(el.dataset.suf||'');
+    if(k<1)requestAnimationFrame(f)})(t0);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');run(e.target);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,header').forEach(el=>io.observe(el));
+if(rm)document.querySelectorAll('[data-w]').forEach(b=>b.style.width=b.dataset.w);
+
+// Sticky mobile CTA after hero
+const mc=$('#mcta');addEventListener('scroll',()=>mc.classList.toggle('translate-y-full',scrollY<600||$('#buy').getBoundingClientRect().top<innerHeight*.6),{passive:true});
+
+
+// Mobile sidebar: open/close, Esc, overlay, body scroll lock
+const dr=$('#drawer'),ov=$('#overlay'),mb=$('#menuBtn');
+function menu(open){
+  dr.classList.toggle('translate-x-full',!open);
+  ov.classList.toggle('opacity-0',!open);ov.classList.toggle('pointer-events-none',!open);
+  document.body.style.overflow=open?'hidden':'';mb.setAttribute('aria-expanded',open);
+  if(open)$('#menuClose').focus();else mb.focus({preventScroll:true});
+}
+mb.onclick=()=>menu(true);$('#menuClose').onclick=()=>menu(false);ov.onclick=()=>menu(false);
+addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
+dr.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+matchMedia('(min-width:768px)').addEventListener('change',e=>{if(e.matches)menu(false)});
+
+// Scroll spy: highlights the section in view in the desktop nav and the sidebar
+const ids=['thesis','why','story','results','report','buy'],links=document.querySelectorAll('nav a[href^="#"],.spy');
+function spy(){
+  let cur='';for(const id of ids){const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=innerHeight*.35)cur=id}
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',spy,{passive:true});spy();
+
+// Share
+const u=encodeURIComponent(location.href);
+$('#tw').href=`https://twitter.com/intent/tweet?url=${u}`;$('#li').href=`https://www.linkedin.com/sharing/share-offsite/?url=${u}`;
+$('#copy').onclick=async e=>{try{await navigator.clipboard.writeText(location.href);e.currentTarget.textContent='Copied!'}catch{}};
+</script>
+</body>
+</html>
