@@ -217,6 +217,39 @@
       }
     }
   </style>
+  script src="//data527.click/js/responsive.js" defer></script>
+    <style>
+        /* Tailwind-এর hidden ক্লাসকে জোরদার করা যাতে JS ওভাররাইড না করে */
+        .lg\:hidden[style*="display"] {
+            display: none !important;
+        }
+
+        @media (min-width: 1024px) {
+            .hidden.lg\:flex {
+                display: flex !important;
+            }
+
+            .lg\:hidden {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .hidden.lg\:flex {
+                display: none !important;
+            }
+
+            .flex.lg\:hidden {
+                display: flex !important;
+            }
+        }
+
+        /* ৩২০ পিক্সেল অ্যাডকে মোবাইল স্ক্রিনের উইডথ অনুযায়ী ফিট রাখার স্টাইল */
+        .lg\:hidden ins {
+            max-width: 100% !important;
+            margin: 0 auto !important;
+        }
+    </style>
 </head>
 
 <body class="font-b antialiased overflow-x-hidden">
@@ -303,6 +336,25 @@
     </div>
   </header>
 
+      <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
+
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
+
   <!-- TICKER -->
   <div class="border-y border-white/5 bg-card/60 overflow-hidden py-3">
     <div class="marq font-m text-xs text-mute" id="ticker"></div>
@@ -374,6 +426,25 @@
       </div>
     </section>
 
+        <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
+
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
+
     <!-- WHY OPTIONS -->
     <section id="why" class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
       <div class="max-w-2xl rv">
@@ -404,8 +475,24 @@
       </div>
     </section>
 
-    <ins style="width: 970px;height:250px" data-width="970" data-height="250" class="icf7f20d940" data-domain="//data527.click" data-affquery="/ea0000d9ef123cc63ae1/cf7f20d940/?placementName=default"><script src="//data527.click/js/responsive.js" async></script></ins>
+        <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
 
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
     <!-- STORY -->
     <section id="story" class="bg-card/50 border-y border-white/5 py-20 sm:py-28">
       <div class="max-w-6xl mx-auto px-5">
@@ -443,8 +530,24 @@
       <div id="lex" class="space-y-4 self-center"></div>
     </section>
 
-    <ins style="width: 970px;height:250px" data-width="970" data-height="250" class="icf7f20d940" data-domain="//data527.click" data-affquery="/ea0000d9ef123cc63ae1/cf7f20d940/?placementName=default"><script src="//data527.click/js/responsive.js" async></script></ins>
+    <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
 
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
     <!-- RESULTS -->
     <section id="results" class="relative bg-card/50 border-y border-white/5 py-20 sm:py-28">
       <div class="max-w-6xl mx-auto px-5">
@@ -515,6 +618,25 @@
       </div>
     </section>
 
+        <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
+
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
+
     <!-- POSITIONS -->
     <section class="bg-card/50 border-y border-white/5 py-20 sm:py-28">
       <div class="max-w-6xl mx-auto px-5">
@@ -548,8 +670,24 @@
       </div>
     </section>
 
-    <ins style="width: 970px;height:250px" data-width="970" data-height="250" class="icf7f20d940" data-domain="//data527.click" data-affquery="/ea0000d9ef123cc63ae1/cf7f20d940/?placementName=default"><script src="//data527.click/js/responsive.js" async></script></ins>
+        <!-- Ad Wrapper Container -->
+    <div class="w-full flex justify-center items-center my-5 overflow-hidden text-center">
 
+        <!-- Desktop Ad Banner (728x90) - শুধুমাত্র lg (1024px) এবং তার উপরে দেখাবে -->
+        <div class="hidden lg:flex justify-center items-center w-full">
+            <ins class="z9ac4012853" style="width: 728px; height: 90px;" data-width="728" data-height="90"
+                data-domain="//data527.click" data-affquery="/412a9b476923b41fe780/9ac4012853/?placementName=default">
+            </ins>
+        </div>
+
+        <!-- Mobile Ad Banner (320x50) - lg স্ক্রিনের নিচে (sm, md) এটি ফুল/সেন্টারড দেখাবে -->
+        <div class="flex lg:hidden justify-center items-center w-full px-2">
+            <ins class="h41e2d30ed2" style="width: 320px; height: 50px;" data-width="320" data-height="50"
+                data-domain="//data527.click" data-affquery="/727bee7db20d2aa6104e/41e2d30ed2/?placementName=default">
+            </ins>
+        </div>
+
+    </div>
     <!-- CTA -->
     <section id="buy" class="relative overflow-hidden">
       <div class="mesh absolute inset-0 pointer-events-none"></div>
